@@ -24,7 +24,7 @@ int main()
 	const char BACKGRND_CHAR = '.';
 	const char ODD_CHAR = ' * ';
 
-	int size;
+	unsigned int size;
 	std::cin >> size;
 	if (size > MAX_WIDTH || size < 0) {
 		std::cout << "The size must be between 1 and 80.";
@@ -39,6 +39,31 @@ int main()
 			diamondVector.at(row).at(col) = '.';
 		}
 	}
+
+
+
+	if (size % 2 == 0) {
+		return 0;
+	}
+	else {
+		int starsForRow = size;
+		unsigned int middle = size / 2;
+		unsigned int offset = 0;
+		unsigned int middleDistance = 0;
+
+		while (starsForRow >= 1) {
+			for (unsigned int numStars = 0; numStars < starsForRow; numStars++) {
+				diamondVector.at(middle + offset).at(middleDistance + numStars) = '*';
+				diamondVector.at(middle - offset).at(middleDistance + numStars) = '*';
+			}
+			starsForRow -= 2;
+			offset += 1;
+			middleDistance += 1;
+		}
+
+	}
+
+
 
 	for (row = 0; row < diamondVector.size(); row++) {
 		for (col = 0; col < diamondVector.size(); col++) {
