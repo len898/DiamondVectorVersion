@@ -18,28 +18,39 @@
 #include <iostream> 
 #include <vector>
 
+void fillRow(std::vector<char>& rowToFill, char charToFill) {
+	unsigned int i;
+	for (i = 0; i < rowToFill.size(); i++) {
+		rowToFill.at(i) = charToFill;
+	}
+}
+
+void displayRow(const std::vector<char>& rowToPrint) {
+	for (unsigned int i = 0; i < rowToPrint.size(); i++) {
+		std::cout << rowToPrint.at(i);
+	}
+	std::cout << std::endl;
+}
+
 int main()
 {
 	const int MAX_WIDTH = 80;
 	const char BACKGRND_CHAR = '.';
 	const char ODD_CHAR = '*';
 
-	unsigned int size;
+	int size;
 	std::cin >> size;
 	if (size > MAX_WIDTH || size < 0) {
 		std::cout << "The size must be between 1 and 80.";
+		return 1;
 	}
 
 	std::vector<std::vector<char> > diamondVector(size, std::vector<char>(size));
 
 	unsigned int row;
-	unsigned int col;
 	for (row = 0; row < diamondVector.size(); row++) {
-		for (col = 0; col < diamondVector.size(); col++) {
-			diamondVector.at(row).at(col) = '.';
-		}
+		fillRow(diamondVector[row], BACKGRND_CHAR);
 	}
-
 
 
 	if (size % 2 == 0) {
@@ -89,10 +100,7 @@ int main()
 
 
 	for (row = 0; row < diamondVector.size(); row++) {
-		for (col = 0; col < diamondVector.size(); col++) {
-			std::cout << diamondVector.at(row).at(col);
-		}
-		std::cout << std::endl;
+		displayRow(diamondVector.at(row));
 	}
 
 
