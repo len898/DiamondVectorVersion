@@ -24,10 +24,27 @@ int main()
 	const char BACKGRND_CHAR = '.';
 	const char ODD_CHAR = ' * ';
 
-	unsigned int size;
+	int size;
 	std::cin >> size;
-	if (size > MAX_WIDTH) {
-		std::cout << "The size must be between 1 and 80."
+	if (size > MAX_WIDTH || size < 0) {
+		std::cout << "The size must be between 1 and 80.";
+	}
+
+	std::vector<std::vector<char> > diamondVector(size, std::vector<char>(size));
+
+	unsigned int row;
+	unsigned int col;
+	for (row = 0; row < diamondVector.size(); row++) {
+		for (col = 0; col < diamondVector.size(); col++) {
+			diamondVector.at(row).at(col) = '.';
+		}
+	}
+
+	for (row = 0; row < diamondVector.size(); row++) {
+		for (col = 0; col < diamondVector.size(); col++) {
+			std::cout << diamondVector.at(row).at(col);
+		}
+		std::cout << std::endl;
 	}
 
 
