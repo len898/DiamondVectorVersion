@@ -56,7 +56,6 @@ int main()
 	if (size % 2 == 0) {
 		int starsForRow = size;
 		unsigned int middle = size / 2;
-		unsigned int offset = 0;
 		unsigned int lowerOffset = 1;
 		unsigned int upperOffset = 0;
 		unsigned int middleDistance = 0;
@@ -87,8 +86,8 @@ int main()
 
 		while (starsForRow >= 1) {
 			for (unsigned int numStars = 0; numStars < starsForRow; numStars++) {
-				diamondVector.at(middle + offset).at(middleDistance + numStars) = '*';
-				diamondVector.at(middle - offset).at(middleDistance + numStars) = '*';
+				diamondVector.at(middle + offset).at(middleDistance + numStars) = ODD_CHAR;
+				diamondVector.at(middle - offset).at(middleDistance + numStars) = ODD_CHAR;
 			}
 			starsForRow -= 2;
 			offset += 1;
