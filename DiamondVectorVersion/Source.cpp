@@ -17,16 +17,17 @@
 
 #include <iostream> 
 #include <vector>
+#include <stdint.h>
 
 void fillRow(std::vector<char>& rowToFill, char charToFill) {
-	unsigned int i;
+	uint8_t i;
 	for (i = 0; i < rowToFill.size(); i++) {
 		rowToFill.at(i) = charToFill;
 	}
 }
 
 void displayRow(const std::vector<char>& rowToPrint) {
-	for (unsigned int i = 0; i < rowToPrint.size(); i++) {
+	for (uint8_t i = 0; i < rowToPrint.size(); i++) {
 		std::cout << rowToPrint.at(i);
 	}
 	std::cout << std::endl;
@@ -47,7 +48,7 @@ int main()
 
 	std::vector<std::vector<char> > diamondVector(size, std::vector<char>(size));
 
-	unsigned int row;
+	uint8_t row;
 	for (row = 0; row < diamondVector.size(); row++) {
 		fillRow(diamondVector[row], BACKGRND_CHAR);
 	}
@@ -55,13 +56,13 @@ int main()
 
 	if (size % 2 == 0) {
 		int starsForRow = size;
-		unsigned int middle = size / 2;
-		unsigned int lowerOffset = 1;
-		unsigned int upperOffset = 0;
-		unsigned int middleDistance = 0;
+		uint8_t middle = size / 2;
+		uint8_t lowerOffset = 1;
+		uint8_t upperOffset = 0;
+		uint8_t middleDistance = 0;
 
 		while (starsForRow >= 1) {
-			for (unsigned int numStars = 0; numStars < starsForRow; numStars++) {
+			for (uint8_t numStars = 0; numStars < starsForRow; numStars++) {
 				if (middleDistance + numStars < size / 2) {
 					diamondVector[middle + upperOffset][middleDistance + numStars] = '\\';
 					diamondVector[middle - lowerOffset][middleDistance + numStars] = '/';
@@ -80,12 +81,12 @@ int main()
 	}
 	else {
 		int starsForRow = size;
-		unsigned int middle = size / 2;
-		unsigned int offset = 0;
-		unsigned int middleDistance = 0;
+		uint8_t middle = size / 2;
+		uint8_t offset = 0;
+		uint8_t middleDistance = 0;
 
 		while (starsForRow >= 1) {
-			for (unsigned int numStars = 0; numStars < starsForRow; numStars++) {
+			for (uint8_t numStars = 0; numStars < starsForRow; numStars++) {
 				diamondVector.at(middle + offset).at(middleDistance + numStars) = ODD_CHAR;
 				diamondVector.at(middle - offset).at(middleDistance + numStars) = ODD_CHAR;
 			}
